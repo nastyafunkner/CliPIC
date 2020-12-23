@@ -1,0 +1,17 @@
+{
+    '_': 'Entrance',
+    '*': 'Discharge',
+    'result': 'result',
+    'A': 'AD',
+    'D': 'AD OD',
+    'E': 'CD',
+    'I': 'OR',
+    'F': 'IC',
+    'N': 'CC',
+    'w': 'work',
+    'd': 'died',
+    'c': 'cure',
+    'h': 'home',
+    't': 'transferred',
+    'u': 'unknown'
+}

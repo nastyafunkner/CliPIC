@@ -1,0 +1,18 @@
+{
+    '_': 'white',
+    '*': 'white',
+    'A': 'pink',
+    'F': 'seagreen2',
+    'N': 'plum',
+    'I': 'skyblue2',
+    'E': 'olivedrab3',
+    'D': 'orange',
+    'r': 'white',
+    'w': 'white',
+    'd': 'white',
+    'c': 'white',
+    'h': 'white',
+    't': 'white',
+    'u': 'white'
+
+}
