@@ -1,5 +1,7 @@
 import pandas as pd
 
+from itertools import chain
+
 
 def extract_clusters(path_to_file: str, sep='\t', eval_=True, header=True, encoding='cp1251'):
     """
@@ -64,42 +66,47 @@ def record_clusters(path_out: str, clusters_out: list, cases_out: list, sep: str
 
 
 def join_lists(input_lists):
-    new_list = []
-    for this_list in input_lists:
-        new_list += this_list
-    return new_list
+    return list(chain(*input_lists))
 
 
-def clusters_to_pd(cluster_file):
+def clusters_to_pd(clusters=None, cases=None, cluster_file=None):
     """
-    Преобразует файл с кластерами TXT в pandas.Dataframe
+    Преобразует кластера и их Id или файл с кластерами TXT в pandas.Dataframe
     :param cluster_file: файл с кластерами
     :return: pd.Dataframe
     """
-    clusters, cases = extract_clusters(cluster_file, eval_=False)
+    if cluster_file is not None:
+        clusters, cases = extract_clusters(cluster_file, eval_=False)
+    if clusters is None or cases is None:
+        print('No available clusters or cases (ids)')
+        print('Add clusters and cases or cluster file path')
+        return None
     num_clusters = [[i] * len(cases) for i, cases in enumerate(cases)]
     num_clusters = join_lists(num_clusters)
     cases = join_lists(cases)
     clusters = join_lists(clusters)
     clusters_df = pd.DataFrame(columns=['id',
-                                        'chain',
+                                        'sequence',
                                         'cluster',
                                         ])
     clusters_df['id'] = cases
-    clusters_df['chain'] = clusters
+    clusters_df['sequence'] = clusters
     clusters_df['cluster'] = num_clusters
     return clusters_df
 
 
-def pd_to_clusters(clusters_df):
+def pd_to_clusters(clusters_df:pd.DataFrame, record_file_name=None, sep='\t', encoding='cp1251'):
     """
-    Преобразует pandas.Dataframe ('id', 'chain', 'cluster') в файл с кластерами TXT
+    Преобразует pandas.Dataframe ('id', 'sequence', 'cluster') в файл с кластерами TXT
+    :param record_file_name: путь и имя файла для записи кластеров
+                            Если None, то кластера не записываются. 
     :return: clusters, cases
     """
     clusters = [[] for _ in range(clusters_df.cluster.max() + 1)]
     cases = [[] for _ in range(len(clusters))]
-    print(clusters, cases)
     for _, row in clusters_df.iterrows():
-        clusters[int(row.cluster)].append(row.chain)
+        clusters[int(row.cluster)].append(row.sequence)
         cases[int(row.cluster)].append(row.id)
+    if isinstance(record_file_name, str):
+        record_clusters(record_file_name, clusters, cases, sep, encoding)
     return clusters, cases

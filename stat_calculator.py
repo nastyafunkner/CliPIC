@@ -32,7 +32,7 @@ def cluster_report(cluster_file,
     df['len'] = df.sequence.apply(len)
 
     summed = df.groupby('cluster').sum()[['aligned', 'outliers']]
-    mean_val = df.groupby('cluster').mean()[['len']].round(2)
+    mean_val = df[df.aligned].groupby('cluster').mean()[['len']].round(2)
 
     base_report = pd.merge(summed,
                            mean_val,
