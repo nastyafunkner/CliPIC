@@ -20,3 +20,10 @@
 
 ### Больше о работе методов
 https://www.sciencedirect.com/science/article/pii/S1877050917323918
+
+### Использовалось в статьях:
+* https://www.sciencedirect.com/science/article/pii/S153204641830087X
+* https://link.springer.com/chapter/10.1007/978-3-030-01129-1_27
+* https://www.hindawi.com/journals/complexity/2018/5870987/
+* https://books.google.ru/books?hl=en&lr=&id=m2OmDwAAQBAJ&oi=fnd&pg=PA150&dq=info:S3jojYdGT6QJ:scholar.google.com&ots=yRso4xmrBH&sig=20rIxr2rWAwij50gGjDG1z8d0YU&redir_esc=y#v=onepage&q&f=false
+* https://www.sciencedirect.com/science/article/pii/S1877050918316661
