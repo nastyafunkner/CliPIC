@@ -19,7 +19,7 @@
 3. cluster_visualization.py - визуализирует КП на основе выровненных последовательностей  
 
 ### Больше о работе методов
-https://www.sciencedirect.com/science/article/pii/S1877050917323918
+* https://www.sciencedirect.com/science/article/pii/S1877050917323918
 
 ### Использовалось в статьях:
 * https://www.sciencedirect.com/science/article/pii/S153204641830087X
