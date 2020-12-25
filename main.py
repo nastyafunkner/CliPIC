@@ -22,7 +22,6 @@ ALPHABET = 'AFNIED'
 SEQUENCE_SEPARATOR = '\t'
 
 
-
 if __name__ == '__main__':
 
     sequence_source_path = os.path.join(SEQUENCE_SOURCE_DIR, SEQUENCE_SOURCE_NAME + '.txt')
